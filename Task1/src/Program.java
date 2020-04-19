@@ -12,6 +12,14 @@ composite numbers: 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 22, 24, 25, 26, 2
 import java.util.Scanner;
 
 public class Program {
+    private static boolean isComposite(int n) {
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter integer number, please:");
@@ -22,9 +30,7 @@ public class Program {
         // Check prime, composite or other (negative, 0 and 1)
         // because prime and composite numbers are positive integers which are strong more than 1
         if (number <= 1) return;
-        if (number == 2
-                || number == 3
-                || Math.pow(number, 2) % 24 == 1) {
+        if (!isComposite(number)) {
             System.out.print(" and prime");
         } else System.out.print(" and composite");
     }
